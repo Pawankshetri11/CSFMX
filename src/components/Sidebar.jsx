@@ -11,22 +11,23 @@ import {
     X
 } from 'lucide-react';
 
+import { NavLink } from 'react-router-dom';
 import logo from '../assets/logo.png';
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
     const menuItems = [
-        { icon: LayoutDashboard, label: 'Dashboard', active: true },
-        { icon: User, label: 'Manage Profile' },
-        { icon: History, label: 'Login History' },
-        { icon: Settings, label: 'Manage Accounts' },
-        { icon: Wallet, label: 'Deposit Funds' },
-        { icon: ArrowUpRight, label: 'Withdraw Funds' },
-        { icon: ArrowRightLeft, label: 'IB/Affiliate' },
-        { icon: History, label: 'Payment History' },
-        { icon: LayoutDashboard, label: 'My IB Dashboard' },
-        { icon: Settings, label: 'Platforms' },
-        { icon: User, label: 'Help' },
-        { icon: LogOut, label: 'Promotions' },
+        { icon: LayoutDashboard, label: 'Dashboard', path: '/' },
+        { icon: User, label: 'Manage Profile', path: '/profile' },
+        { icon: History, label: 'Login History', path: '/login-history' },
+        { icon: Settings, label: 'Manage Accounts', path: '/accounts' },
+        { icon: Wallet, label: 'Deposit Funds', path: '/deposit' },
+        { icon: ArrowUpRight, label: 'Withdraw Funds', path: '/withdraw' },
+        { icon: ArrowRightLeft, label: 'IB/Affiliate', path: '/affiliate' },
+        { icon: History, label: 'Payment History', path: '/payment-history' },
+        { icon: LayoutDashboard, label: 'My IB Dashboard', path: '/ib-dashboard' },
+        { icon: Settings, label: 'Platforms', path: '/platforms' },
+        { icon: User, label: 'Help', path: '/help' },
+        { icon: LogOut, label: 'Promotions', path: '/promotions' },
     ];
 
     return (
@@ -37,9 +38,9 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
           lg:relative lg:translate-x-0 flex flex-col h-screen`}
             >
                 <div className="p-6 border-b border-slate-50 flex items-center justify-between">
-                    <div className="flex items-center">
+                    <NavLink to="/" className="flex items-center">
                         <img src={logo} alt="Capital Street FX" className="h-12 w-auto object-contain" />
-                    </div>
+                    </NavLink>
                     <button onClick={() => toggleSidebar(false)} className="lg:hidden p-1 text-slate-400">
                         <X size={20} />
                     </button>
@@ -47,16 +48,20 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
                 <nav className="flex-1 py-4 overflow-y-auto custom-scrollbar space-y-1">
                     {menuItems.map((item, index) => (
-                        <button
+                        <NavLink
                             key={index}
-                            className={`w-full flex items-center gap-3 px-6 py-3.5 text-sm font-medium transition-all 
-                ${item.active
+                            to={item.path}
+                            className={({ isActive }) => `w-full flex items-center gap-3 px-6 py-3.5 text-sm font-medium transition-all 
+                ${isActive
                                     ? 'sidebar-item-active'
                                     : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900'}`}
+                            onClick={() => {
+                                if (window.innerWidth < 1024) toggleSidebar(false);
+                            }}
                         >
-                            <item.icon className={`w-4 h-4 ${item.active ? 'text-slate-900' : 'text-slate-400'}`} />
+                            <item.icon className={`w-4 h-4`} />
                             {item.label}
-                        </button>
+                        </NavLink>
                     ))}
                 </nav>
 
