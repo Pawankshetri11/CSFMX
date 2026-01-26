@@ -58,7 +58,7 @@ const Profile = () => {
             <div className="space-y-6 animate-fade">
                 {/* Profile Header Card */}
                 <div className="bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden">
-                    <div className="h-32 bg-gradient-to-r from-[#00ff00]/10 via-[#ff00ff]/5 to-[#00ff00]/10 relative">
+                    <div className="h-32 bg-gradient-to-r from-[#00ff00]/10 via-slate-50 to-[#00ff00]/5 relative">
                         <div className="absolute -bottom-10 left-8 flex items-end gap-6">
                             <div className="relative group">
                                 <div className="w-24 h-24 rounded-lg bg-white p-1 shadow-md border border-slate-200 overflow-hidden">
@@ -66,7 +66,7 @@ const Profile = () => {
                                         <User className="w-10 h-10" />
                                     </div>
                                 </div>
-                                <button className="absolute bottom-1 right-1 p-2 bg-[#ff00ff] text-white rounded shadow-lg hover:scale-105 transition-transform">
+                                <button className="absolute bottom-1 right-1 p-2 bg-[#00ff00] text-black rounded shadow-lg hover:scale-105 transition-transform">
                                     <Camera className="w-3.5 h-3.5" />
                                 </button>
                             </div>
@@ -84,9 +84,9 @@ const Profile = () => {
                                 <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest leading-none mb-1">Account Type</p>
                                 <p className="text-xs font-bold text-slate-700">Individual</p>
                             </div>
-                            <div className="px-3 py-1.5 bg-[#ff00ff]/5 rounded border border-[#ff00ff]/10">
-                                <p className="text-[9px] font-bold text-[#ff00ff] uppercase tracking-widest leading-none mb-1">Verification Status</p>
-                                <p className="text-xs font-bold text-[#ff00ff]">Incomplete</p>
+                            <div className="px-3 py-1.5 bg-blue-50 rounded border border-blue-100">
+                                <p className="text-[9px] font-bold text-blue-600 uppercase tracking-widest leading-none mb-1">Verification Status</p>
+                                <p className="text-xs font-bold text-blue-700">Incomplete</p>
                             </div>
                         </div>
 
@@ -179,7 +179,7 @@ const Profile = () => {
                                     ) : (
                                         <div className="flex items-center gap-3">
                                             <p className="text-sm font-bold text-slate-800">{formData.phone}</p>
-                                            <button className="px-2 py-0.5 bg-[#ff00ff]/10 text-[#ff00ff] text-[9px] font-black uppercase rounded border border-[#ff00ff]/20 hover:bg-[#ff00ff] hover:text-white transition-all">
+                                            <button className="px-2 py-0.5 bg-[#00ff00]/10 text-[#00ff00] text-[9px] font-black uppercase rounded border border-[#00ff00]/20 hover:bg-[#00ff00] hover:text-black transition-all">
                                                 Verify
                                             </button>
                                         </div>
@@ -190,7 +190,7 @@ const Profile = () => {
 
                         <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
                             <h2 className="text-xs font-black text-slate-900 mb-6 flex items-center gap-2 uppercase tracking-widest">
-                                <div className="w-1.5 h-1.5 bg-[#ff00ff]"></div>
+                                <div className="w-1.5 h-1.5 bg-slate-200"></div>
                                 Address Details
                             </h2>
 
@@ -238,9 +238,9 @@ const Profile = () => {
 
                     <div className="space-y-6">
                         <div className="bg-[#111] rounded-lg p-6 text-white relative overflow-hidden border border-white/5">
-                            <div className="absolute -right-4 -top-4 w-24 h-24 bg-[#ff00ff]/10 rounded-full blur-2xl"></div>
+                            <div className="absolute -right-4 -top-4 w-24 h-24 bg-[#00ff00]/5 rounded-full blur-2xl"></div>
                             <h3 className="text-xs font-black uppercase tracking-widest mb-2 flex items-center gap-2">
-                                <ShieldCheck className="w-3.5 h-3.5 text-[#ff00ff]" />
+                                <ShieldCheck className="w-3.5 h-3.5 text-[#00ff00]" />
                                 Security Status
                             </h3>
                             <p className="text-slate-500 text-[11px] mb-6 font-bold leading-relaxed">Protect your account with advanced security features.</p>
@@ -252,7 +252,7 @@ const Profile = () => {
                                 <SecurityItem label="2FA Device" status={false} />
                             </div>
 
-                            <button className="w-full mt-6 py-2.5 bg-[#ff00ff] text-white text-xs font-black uppercase rounded shadow-lg shadow-[#ff00ff]/20 hover:scale-[1.02] transition-transform active:scale-95">
+                            <button className="w-full mt-6 py-2.5 bg-[#00ff00] text-black text-xs font-black uppercase rounded shadow-lg shadow-[#00ff00]/10 hover:scale-[1.02] transition-transform active:scale-95">
                                 Enable 2FA Security
                             </button>
                         </div>
