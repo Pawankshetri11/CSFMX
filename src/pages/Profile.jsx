@@ -8,8 +8,6 @@ import {
     ClipboardCheck,
     ShieldCheck,
     Mail,
-    Phone,
-    MapPin,
     CheckCircle2,
     AlertCircle,
     Camera,

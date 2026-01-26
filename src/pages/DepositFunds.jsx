@@ -1,6 +1,6 @@
 import React from 'react';
 import MainLayout from '../layouts/MainLayout';
-import { CreditCard, Landmark, Wallet, Coins, Clock, Zap, ChevronRight, Info } from 'lucide-react';
+import { CreditCard, Landmark, Wallet, Coins, Clock, Zap, ChevronRight } from 'lucide-react';
 
 const DepositFunds = () => {
     const paymentMethods = [
