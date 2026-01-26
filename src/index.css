@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #00ff00;
+  --secondary: #ff00ff;
+  --bg-main: #F8FAFC;
+  --text-main: #334155;
+  --sidebar-w: 256px;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  @apply bg-[#F8FAFC] text-[#334155];
+}
+
+.sidebar-item-active {
+  border-left: 4px solid var(--primary);
+  @apply bg-slate-100 text-slate-900;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #E2E8F0;
+  border-radius: 10px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade {
+  animation: fadeIn 0.4s ease-out forwards;
+}
