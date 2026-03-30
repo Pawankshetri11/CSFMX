@@ -12,6 +12,15 @@ import IBDashboard from './pages/IBDashboard';
 import Platforms from './pages/Platforms';
 import Help from './pages/Help';
 import Promotions from './pages/Promotions';
+import Dashboard2 from './pages/Dashboard2';
+import Referrals from './pages/Referrals';
+import ReferralsInfo from './pages/ReferralsInfo';
+import PromotionalBanner from './pages/PromotionalBanner';
+import IBPromotionLink from './pages/IBPromotionLink';
+import MyIBLink from './pages/MyIBLink';
+import RebateReport from './pages/RebateReport';
+import IBAgreement from './pages/IBAgreement';
+import ExtendedDueDiligence from './pages/ExtendedDueDiligence';
 
 function App() {
   return (
@@ -29,6 +38,15 @@ function App() {
         <Route path="/platforms" element={<Platforms />} />
         <Route path="/help" element={<Help />} />
         <Route path="/promotions" element={<Promotions />} />
+        <Route path="/dashboard2" element={<Dashboard2 />} />
+        <Route path="/referrals" element={<Referrals />} />
+        <Route path="/referrals-info" element={<ReferralsInfo />} />
+        <Route path="/promotional-banner" element={<PromotionalBanner />} />
+        <Route path="/ib-promotion-link" element={<IBPromotionLink />} />
+        <Route path="/my-ib-link" element={<MyIBLink />} />
+        <Route path="/rebate-report" element={<RebateReport />} />
+        <Route path="/ib-agreement" element={<IBAgreement />} />
+        <Route path="/extended-due-diligence" element={<ExtendedDueDiligence />} />
       </Routes>
     </Router>
   );

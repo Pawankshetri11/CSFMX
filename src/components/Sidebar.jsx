@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     LayoutDashboard,
     Wallet,
@@ -8,15 +8,29 @@ import {
     User,
     Settings,
     LogOut,
-    X
+    X,
+    ChevronDown,
+    ChevronRight
 } from 'lucide-react';
 
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import logo from '../assets/logo.png';
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
+    const location = useLocation();
+    const isIbDashboardActive = location.pathname.includes('/ib-dashboard') || 
+                                location.pathname.includes('/referrals') ||
+                                location.pathname.includes('/promotional-banner') ||
+                                location.pathname.includes('/ib-promotion-link') ||
+                                location.pathname.includes('/my-ib-link') ||
+                                location.pathname.includes('/rebate-report') ||
+                                location.pathname.includes('/ib-agreement') ||
+                                location.pathname.includes('/extended-due-diligence');
+    const [ibMenuOpen, setIbMenuOpen] = useState(isIbDashboardActive);
+
     const menuItems = [
         { icon: LayoutDashboard, label: 'Dashboard', path: '/' },
+        { icon: LayoutDashboard, label: 'Dashboard 2', path: '/dashboard2' },
         { icon: User, label: 'Manage Profile', path: '/profile' },
         { icon: History, label: 'Login History', path: '/login-history' },
         { icon: Settings, label: 'Manage Accounts', path: '/accounts' },
@@ -24,7 +38,21 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         { icon: ArrowUpRight, label: 'Withdraw Funds', path: '/withdraw' },
         { icon: ArrowRightLeft, label: 'IB/Affiliate', path: '/affiliate' },
         { icon: History, label: 'Payment History', path: '/payment-history' },
-        { icon: LayoutDashboard, label: 'My IB Dashboard', path: '/ib-dashboard' },
+        { 
+            icon: LayoutDashboard, 
+            label: 'My IB Dashboard', 
+            path: '/ib-dashboard',
+            subItems: [
+                { label: 'Referrals', path: '/referrals' },
+                { label: 'Referrals Info', path: '/referrals-info' },
+                { label: 'Promotional Banner', path: '/promotional-banner' },
+                { label: 'IB Promotion Link', path: '/ib-promotion-link' },
+                { label: 'My IB Link', path: '/my-ib-link' },
+                { label: 'Rebate Report', path: '/rebate-report' },
+                { label: 'IB Agreement', path: '/ib-agreement' },
+                { label: 'Extended Due Diligence', path: '/extended-due-diligence' },
+            ]
+        },
         { icon: Settings, label: 'Platforms', path: '/platforms' },
         { icon: User, label: 'Help', path: '/help' },
         { icon: LogOut, label: 'Promotions', path: '/promotions' },
@@ -48,20 +76,61 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
                 <nav className="flex-1 py-4 overflow-y-auto custom-scrollbar space-y-1">
                     {menuItems.map((item, index) => (
-                        <NavLink
-                            key={index}
-                            to={item.path}
-                            className={({ isActive }) => `w-full flex items-center gap-3 px-6 py-3.5 text-sm font-medium transition-all 
-                ${isActive
-                                    ? 'sidebar-item-active'
-                                    : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900'}`}
-                            onClick={() => {
-                                if (window.innerWidth < 1024) toggleSidebar(false);
-                            }}
-                        >
-                            <item.icon className={`w-4 h-4`} />
-                            {item.label}
-                        </NavLink>
+                        <div key={index}>
+                            {item.subItems ? (
+                                <>
+                                    <button
+                                        onClick={() => setIbMenuOpen(!ibMenuOpen)}
+                                        className={`w-full flex items-center justify-between px-6 py-3.5 text-sm font-medium transition-all ${
+                                            isIbDashboardActive
+                                                ? 'sidebar-item-active'
+                                                : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900'
+                                        }`}
+                                    >
+                                        <div className="flex items-center gap-3">
+                                            <item.icon className="w-4 h-4" />
+                                            {item.label}
+                                        </div>
+                                        {ibMenuOpen ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
+                                    </button>
+                                    
+                                    {ibMenuOpen && (
+                                        <div className="bg-slate-50/50 py-2">
+                                            {item.subItems.map((sub, subIdx) => (
+                                                <NavLink
+                                                    key={subIdx}
+                                                    to={sub.path}
+                                                    className={({ isActive }) => `w-full flex items-center gap-3 pl-14 pr-6 py-2.5 text-sm font-medium transition-all ${
+                                                        isActive
+                                                            ? 'text-[rgb(0,255,0)]'
+                                                            : 'text-slate-500 hover:text-slate-900'
+                                                    }`}
+                                                    onClick={() => {
+                                                        if (window.innerWidth < 1024) toggleSidebar(false);
+                                                    }}
+                                                >
+                                                    {sub.label}
+                                                </NavLink>
+                                            ))}
+                                        </div>
+                                    )}
+                                </>
+                            ) : (
+                                <NavLink
+                                    to={item.path}
+                                    className={({ isActive }) => `w-full flex items-center gap-3 px-6 py-3.5 text-sm font-medium transition-all 
+                                        ${isActive
+                                            ? 'sidebar-item-active'
+                                            : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900'}`}
+                                    onClick={() => {
+                                        if (window.innerWidth < 1024) toggleSidebar(false);
+                                    }}
+                                >
+                                    <item.icon className="w-4 h-4" />
+                                    {item.label}
+                                </NavLink>
+                            )}
+                        </div>
                     ))}
                 </nav>
 
