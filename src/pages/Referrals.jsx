@@ -1,6 +1,6 @@
 import React from 'react';
 import MainLayout from '../layouts/MainLayout';
-import { Users, Search, Download } from 'lucide-react';
+import { Search, Download } from 'lucide-react';
 
 const Referrals = () => {
     return (
