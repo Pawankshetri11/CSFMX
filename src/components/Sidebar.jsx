@@ -23,10 +23,16 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                                 location.pathname.includes('/promotional-banner') ||
                                 location.pathname.includes('/ib-promotion-link') ||
                                 location.pathname.includes('/my-ib-link') ||
-                                location.pathname.includes('/rebate-report') ||
                                 location.pathname.includes('/ib-agreement') ||
                                 location.pathname.includes('/extended-due-diligence');
+
+    const isPromotionsActive = location.pathname.includes('/request-promotion') ||
+                                location.pathname.includes('/promotion-lot-report') ||
+                                location.pathname.includes('/promotion-cancellation') ||
+                                location.pathname.includes('/bonus-history');
+
     const [ibMenuOpen, setIbMenuOpen] = useState(isIbDashboardActive);
+    const [promoMenuOpen, setPromoMenuOpen] = useState(isPromotionsActive);
 
     const menuItems = [
         { icon: LayoutDashboard, label: 'Dashboard', path: '/' },
@@ -55,7 +61,17 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         },
         { icon: Settings, label: 'Platforms', path: '/platforms' },
         { icon: User, label: 'Help', path: '/help' },
-        { icon: LogOut, label: 'Promotions', path: '/promotions' },
+        { 
+            icon: LogOut, 
+            label: 'Promotions', 
+            path: '/promotions',
+            subItems: [
+                { label: 'Request For Promotion', path: '/request-promotion' },
+                { label: 'Promotion Lot Report', path: '/promotion-lot-report' },
+                { label: 'Promotion Cancellation Request', path: '/promotion-cancellation' },
+                { label: 'Bonus History', path: '/bonus-history' },
+            ]
+        },
     ];
 
     return (
@@ -80,9 +96,12 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                             {item.subItems ? (
                                 <>
                                     <button
-                                        onClick={() => setIbMenuOpen(!ibMenuOpen)}
+                                        onClick={() => {
+                                            if (item.label === 'My IB Dashboard') setIbMenuOpen(!ibMenuOpen);
+                                            if (item.label === 'Promotions') setPromoMenuOpen(!promoMenuOpen);
+                                        }}
                                         className={`w-full flex items-center justify-between px-6 py-3.5 text-sm font-medium transition-all ${
-                                            isIbDashboardActive
+                                            (item.label === 'My IB Dashboard' && isIbDashboardActive) || (item.label === 'Promotions' && isPromotionsActive)
                                                 ? 'sidebar-item-active'
                                                 : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900'
                                         }`}
@@ -91,16 +110,16 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                                             <item.icon className="w-4 h-4" />
                                             {item.label}
                                         </div>
-                                        {ibMenuOpen ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
+                                        {(item.label === 'My IB Dashboard' ? ibMenuOpen : promoMenuOpen) ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
                                     </button>
                                     
-                                    {ibMenuOpen && (
-                                        <div className="bg-slate-50/50 py-2">
+                                    {((item.label === 'My IB Dashboard' && ibMenuOpen) || (item.label === 'Promotions' && promoMenuOpen)) && (
+                                        <div className="bg-slate-50/50 py-1">
                                             {item.subItems.map((sub, subIdx) => (
                                                 <NavLink
                                                     key={subIdx}
                                                     to={sub.path}
-                                                    className={({ isActive }) => `w-full flex items-center gap-3 pl-14 pr-6 py-2.5 text-sm font-medium transition-all ${
+                                                    className={({ isActive }) => `w-full flex items-center gap-3 pl-14 pr-6 py-2 text-xs font-semibold transition-all ${
                                                         isActive
                                                             ? 'text-[rgb(0,255,0)]'
                                                             : 'text-slate-500 hover:text-slate-900'

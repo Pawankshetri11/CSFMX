@@ -21,6 +21,10 @@ import MyIBLink from './pages/MyIBLink';
 import RebateReport from './pages/RebateReport';
 import IBAgreement from './pages/IBAgreement';
 import ExtendedDueDiligence from './pages/ExtendedDueDiligence';
+import RequestPromotion from './pages/RequestPromotion';
+import PromotionLotReport from './pages/PromotionLotReport';
+import PromotionCancellation from './pages/PromotionCancellation';
+import BonusHistory from './pages/BonusHistory';
 
 function App() {
   return (
@@ -47,6 +51,10 @@ function App() {
         <Route path="/rebate-report" element={<RebateReport />} />
         <Route path="/ib-agreement" element={<IBAgreement />} />
         <Route path="/extended-due-diligence" element={<ExtendedDueDiligence />} />
+        <Route path="/request-promotion" element={<RequestPromotion />} />
+        <Route path="/promotion-lot-report" element={<PromotionLotReport />} />
+        <Route path="/promotion-cancellation" element={<PromotionCancellation />} />
+        <Route path="/bonus-history" element={<BonusHistory />} />
       </Routes>
     </Router>
   );
