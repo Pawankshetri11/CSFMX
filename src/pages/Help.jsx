@@ -10,7 +10,6 @@ import {
     BookOpen, 
     ShieldCheck, 
     Zap,
-    ExternalLink,
     ArrowRight
 } from 'lucide-react';
 

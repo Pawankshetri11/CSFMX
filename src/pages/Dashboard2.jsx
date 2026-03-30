@@ -3,8 +3,8 @@ import MainLayout from '../layouts/MainLayout';
 import AccountCard from '../components/AccountCard';
 import StatsGrid from '../components/StatsGrid';
 import MarketActivity from '../components/MarketActivity';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, ComposedChart, Line } from 'recharts';
-import { PieChart as PieChartIcon, Plus, RefreshCw } from 'lucide-react';
+import { Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, ComposedChart, Line } from 'recharts';
+import { PieChart as PieChartIcon, Plus } from 'lucide-react';
 
 const Dashboard2 = () => {
     const [activeTab, setActiveTab] = useState('live');
