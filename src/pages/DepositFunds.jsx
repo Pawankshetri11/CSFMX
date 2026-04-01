@@ -17,7 +17,6 @@ import {
 } from 'lucide-react';
 
 const DepositFunds = () => {
-    const primaryColor = "#00ff00";
 
     const paymentMethods = [
         {
