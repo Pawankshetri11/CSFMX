@@ -1,9 +1,8 @@
 import React from 'react';
 import MainLayout from '../layouts/MainLayout';
-import { Download, Filter, Calendar, ArrowDownCircle, CheckCircle2, Clock, XCircle } from 'lucide-react';
+import { Download, Filter, Calendar, CheckCircle2, Clock, XCircle } from 'lucide-react';
 
 const DepositHistory = () => {
-    const primaryColor = "#00ff00";
 
     const transactions = [
         { id: 'TXN-98210', date: '2024-03-15 10:30', method: 'BANK WIRE', amount: '$5,000.00', status: 'COMPLETED', statusColor: '#00ff00', icon: CheckCircle2 },
