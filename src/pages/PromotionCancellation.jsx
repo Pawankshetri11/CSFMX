@@ -1,43 +1,68 @@
 import React from 'react';
 import MainLayout from '../layouts/MainLayout';
-import { AlertTriangle, Clock } from 'lucide-react';
+import { AlertTriangle, Clock, XCircle, ShieldAlert } from 'lucide-react';
 
 const PromotionCancellation = () => {
     return (
         <MainLayout>
-            <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden mb-8">
-                <div className="p-1 bg-[#ff00ff]"></div>
-                <div className="p-6 border-b border-slate-100 flex justify-between items-center">
+            <div className="space-y-8 animate-fade">
+                {/* Header Section */}
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div>
-                        <h1 className="text-xl font-black text-slate-900 uppercase tracking-tighter">Promotion Cancellation Request</h1>
-                        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Submit requests to cancel active bonuses</p>
+                        <h1 className="text-2xl font-black text-slate-900 uppercase tracking-tighter leading-none">EQUITY ADJUSTMENT RECALL</h1>
+                        <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-2">BONUS CANCELLATION & MARGIN ACCOUNT LIQUIDATION REQUESTS</p>
                     </div>
                 </div>
 
-                <div className="p-6 border-b border-slate-100 italic bg-amber-50/30 text-amber-600 text-[10px] font-bold uppercase tracking-widest leading-relaxed flex items-center gap-3">
-                    <AlertTriangle size={16} className="text-amber-500" />
-                    Please note that cancelling a bonus may result in immediate adjustment of your account equity and potential margin call if margin requirements are not met.
+                {/* Risk Warning Card */}
+                <div className="bg-black p-8 rounded-lg text-white border-l-4 border-[#ff00ff] shadow-xl relative overflow-hidden group">
+                    <div className="relative z-10 flex items-start gap-6">
+                        <div className="p-3 bg-[#ff00ff]/10 text-[#ff00ff] rounded group-hover:bg-[#ff00ff] group-hover:text-black transition-all">
+                            <ShieldAlert size={28} />
+                        </div>
+                        <div className="space-y-3">
+                            <h3 className="text-lg font-black uppercase tracking-tighter leading-none">CRITICAL: Margin Risk Exposure</h3>
+                            <p className="text-[11px] text-slate-400 font-bold uppercase leading-relaxed tracking-wider max-w-3xl">
+                                Terminating a bonus allocation will result in immediate equity deduction. This may trigger an automatic margin call or account liquidation if the free margin is insufficient to maintain current open positions. Proceed with extreme caution.
+                            </p>
+                        </div>
+                    </div>
+                    {/* Background Decor */}
+                    <div className="absolute right-0 top-0 opacity-10 pointer-events-none transform translate-x-1/3 -translate-y-1/3">
+                        <AlertTriangle size={250} />
+                    </div>
                 </div>
 
-                <div className="p-6">
+                {/* Main Action Card */}
+                <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden">
                     <div className="overflow-x-auto">
-                        <table className="w-full text-left border-collapse">
+                        <table className="w-full text-left border-collapse min-w-max">
                             <thead>
-                                <tr className="bg-[#8cc63f] text-white">
-                                    <th className="p-4 text-[10px] font-black uppercase tracking-widest text-center border-r border-white/20">Client ID</th>
-                                    <th className="p-4 text-[10px] font-black uppercase tracking-widest text-center border-r border-white/20">Promotion Name</th>
-                                    <th className="p-4 text-[10px] font-black uppercase tracking-widest text-center border-r border-white/20">Approved Date</th>
-                                    <th className="p-4 text-[10px] font-black uppercase tracking-widest text-center">Action</th>
+                                <tr className="bg-slate-900 text-white border-b border-white/10 uppercase font-black text-[10px] tracking-widest">
+                                    <th className="p-5 border-r border-white/5">Asset Recipient ID</th>
+                                    <th className="p-5 border-r border-white/5">Allocated Promotion</th>
+                                    <th className="p-5 border-r border-white/5 text-center">Protocol Acceptance Date</th>
+                                    <th className="p-5 text-right">Termination Protocol</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr className="border-b border-slate-100 last:border-0 hover:bg-slate-50/50 transition-all">
-                                    <td className="p-4 text-[11px] font-bold text-slate-600 text-center uppercase tracking-tight">csfx25112156</td>
-                                    <td className="p-4 text-[11px] font-bold text-slate-600 text-center uppercase">900% Fully Tradeable Bonus</td>
-                                    <td className="p-4 text-[11px] font-bold text-slate-600 text-center uppercase tracking-tight">Oct 12, 2024</td>
-                                    <td className="p-4 text-center">
-                                        <button className="bg-black text-white text-[10px] font-black py-2 px-6 rounded hover:bg-red-600 hover:text-white transition-all uppercase">
-                                            Cancel
+                            <tbody className="text-[11px] font-bold uppercase tracking-tight text-slate-880">
+                                <tr className="border-b border-slate-50 hover:bg-slate-50/80 transition-colors group">
+                                    <td className="p-5">
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-2 h-2 rounded-full bg-[#ff00ff]/40 group-hover:bg-[#ff00ff] transition-colors" />
+                                            <span className="font-mono text-slate-900">CSFX25112156</span>
+                                        </div>
+                                    </td>
+                                    <td className="p-5">
+                                        <div className="flex flex-col">
+                                            <span className="font-black text-slate-900">900% FULLY TRADEABLE BONUS</span>
+                                            <span className="text-[9px] text-slate-400 font-bold tracking-widest uppercase">Institutional Credit Assignment</span>
+                                        </div>
+                                    </td>
+                                    <td className="p-5 text-center text-slate-400 font-mono tracking-tighter">OCT 12, 2024</td>
+                                    <td className="p-5 text-right px-8">
+                                        <button className="bg-slate-900 text-white text-[9px] font-black py-4 px-10 rounded hover:bg-red-600 hover:text-white transition-all uppercase tracking-widest active:scale-95 shadow-sm group-hover:shadow-red-600/20">
+                                            Execute Recall
                                         </button>
                                     </td>
                                 </tr>
@@ -45,12 +70,15 @@ const PromotionCancellation = () => {
                         </table>
                     </div>
                 </div>
-            </div>
 
-            <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-6 text-center space-y-4">
-                <Clock className="w-10 h-10 text-slate-200 mx-auto" />
-                <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Previous Cancellation History</h4>
-                <p className="text-[10px] font-bold text-slate-300 uppercase tracking-tight">No cancellation requests found</p>
+                {/* History Section */}
+                <div className="bg-slate-50 border border-slate-200 rounded-lg p-12 text-center space-y-6">
+                    <Clock className="w-16 h-16 text-slate-200 mx-auto opacity-50" />
+                    <div className="space-y-1">
+                        <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none">ARCHIVED RECALL PROTOCOLS</h4>
+                        <p className="text-[9px] text-slate-300 font-bold uppercase tracking-widest mt-2">NO AUDIT RECORDS TARGETED FOR CANCELLATION</p>
+                    </div>
+                </div>
             </div>
         </MainLayout>
     );

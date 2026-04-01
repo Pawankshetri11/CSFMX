@@ -25,6 +25,8 @@ import RequestPromotion from './pages/RequestPromotion';
 import PromotionLotReport from './pages/PromotionLotReport';
 import PromotionCancellation from './pages/PromotionCancellation';
 import BonusHistory from './pages/BonusHistory';
+import DepositHistory from './pages/DepositHistory';
+import WithdrawalHistory from './pages/WithdrawalHistory';
 
 function App() {
   return (
@@ -38,6 +40,8 @@ function App() {
         <Route path="/withdraw" element={<WithdrawFunds />} />
         <Route path="/affiliate" element={<Affiliate />} />
         <Route path="/payment-history" element={<PaymentHistory />} />
+        <Route path="/deposit-history" element={<DepositHistory />} />
+        <Route path="/withdrawal-history" element={<WithdrawalHistory />} />
         <Route path="/ib-dashboard" element={<IBDashboard />} />
         <Route path="/platforms" element={<Platforms />} />
         <Route path="/help" element={<Help />} />
