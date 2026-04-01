@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import MainLayout from '../layouts/MainLayout';
-import { Link as LinkIcon, Copy, CheckCircle2, Megaphone, Terminal, Activity } from 'lucide-react';
+import { Copy, CheckCircle2, Megaphone, Terminal, Activity } from 'lucide-react';
 
 const IBPromotionLink = () => {
     const [copied, setCopied] = useState(false);

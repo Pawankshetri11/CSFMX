@@ -1,9 +1,8 @@
 import React from 'react';
 import MainLayout from '../layouts/MainLayout';
-import { Download, Filter, Calendar, ArrowUpCircle, CheckCircle2, Clock, XCircle, MoreVertical } from 'lucide-react';
+import { Download, Filter, Calendar, CheckCircle2, Clock, XCircle, MoreVertical } from 'lucide-react';
 
 const WithdrawalHistory = () => {
-    const secondaryColor = "#ff00ff";
 
     const transactions = [
         { id: 'WDR-44210', date: '2024-03-16 11:20', method: 'USD (SKRILL)', amount: '$1,200.00', status: 'COMPLETED', statusColor: '#00ff00', icon: CheckCircle2 },

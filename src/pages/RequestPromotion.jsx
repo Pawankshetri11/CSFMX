@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import MainLayout from '../layouts/MainLayout';
-import { FileText, CheckCircle2, AlertCircle, Clock, Search, Gift } from 'lucide-react';
+import { AlertCircle, Clock, Gift } from 'lucide-react';
 
 const RequestPromotion = () => {
     const [activeTab, setActiveTab] = useState('request');

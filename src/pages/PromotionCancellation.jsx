@@ -1,6 +1,6 @@
 import React from 'react';
 import MainLayout from '../layouts/MainLayout';
-import { AlertTriangle, Clock, XCircle, ShieldAlert } from 'lucide-react';
+import { AlertTriangle, Clock, ShieldAlert } from 'lucide-react';
 
 const PromotionCancellation = () => {
     return (
